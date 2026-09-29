@@ -1,0 +1,11 @@
+const prompt = require("prompt-sync")();
+let Spot = 10;
+let Cpot = 29.9;
+let Touv = 0.2;
+let Long = parseFloat(prompt("Quelle est la longeur de la pièce? "));
+let Larg = parseFloat(prompt("Quelle est la largeur de la pièce?"));
+let Haut = parseFloat(prompt("Quelle est la hauteur de la pièce?"));
+let surface = (2 * Long + 2 * Larg) * Haut * (1 - Touv);
+let Npot = Math.ceil(surface / Spot);
+let prix = Npot * Cpot;
+console.log(`Nbr pot=${Npot} Cout peinture: ${prix}€`);

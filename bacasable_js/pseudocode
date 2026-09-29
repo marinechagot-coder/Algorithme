@@ -71,23 +71,36 @@ Debut
     else: msg="obseité"
   ECRIRE(msg)
 Fin
+
 Algorithme Devis peinture
 Debut
-  VARIABLE Long, Larg, Haut, surface, Cpot, Spot : REEL
+  VARIABLE Long, Larg, Haut, surface, Cpot, Spot, Prix, Touv : REEL
   VARIABLE  Npot: ENTIER
   Spot=10
+  Cpot=29.9
+  Touv=0.20
   ECRIRE ("Quelle est la longeur de la pièce?")
   LIRE(Long)
   ECRIRE ("Quelle est la largeur de la pièce?")
   LIRE(Larg)
   ECRIRE ("Quelle est la hauteur de la pièce?")
   LIRE(Haut)
-  surface=(2*Long+2*Larg)*Haut;
-  IMC=poids/taille²
-  SELECT IMC:
-    <linf:   msg="Insuffisance"
-    <lpn: msg="poids normal"
-    <lsp: msg="surpoids"
-    else: msg="obseité"
-  ECRIRE(msg)
+  surface=(2*Long+2*Larg)*Haut*(1-Touv);
+  Npot=arrondi.sup(surface/Spot)
+  prix=Npot*Cpot
+  ECRIRE("Nbr pot="+Npot+" Cout peinture:" + prix)
+Fin
+
+
+Algorithme Convertisseur de temps
+Debut
+  VARIABLE temps : REEL
+  VARIABLE  heure, minute, seconde: ENTIER
+  ECRIRE ("Quelle durée en seconde?")
+  LIRE(temps)
+  seconde=temps%60
+  temps=(temps-seconde)/60
+  minute=temps%60
+  heure=(temps-minute)/60
+  ECRIRE(heure+"h "+minute+"m "+seconde+"s")
 Fin
