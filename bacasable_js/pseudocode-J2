@@ -1,0 +1,246 @@
+Algorithme Calculatrice
+DEBUT
+  VARIABLE a,b,resultat : REEL
+  VARIABLE  op: CHAINE
+  ECRIRE ("Premier nombre?")
+  LIRE(a)
+  ECRIRE ("operation?")
+  LIRE(op)
+  ECRIRE ("deuxieme nombre?")
+  LIRE(b)
+  SELON op
+    CAS "+" FAIRE
+      resultat=a+b
+      ECRIRE (resultat)
+    CAS "-" FAIRE
+      resultat=a-b
+      ECRIRE (resultat)
+    CAS "*" FAIRE
+      resultat=a*b
+      ECRIRE (resultat)
+    CASE "/" FAIRE
+      SI b==0
+        ECRIRE ("Erreur : division par zero")
+      ELSE
+        resultat=a+b
+        ECRIRE (resultat)
+    CASE ELSE
+      ECRIRE ("Erreur : operateur inconnu")
+  FIN SWITCH
+FIN
+
+Algorithme PgPp 
+DEBUT
+  VARIABLE bingo, prop, cpt : ENTIER
+  VARIABLE cherche: BOOLEAN
+  bingo=range(1,100);
+  cherche=true;
+  cpt=1
+  TANT QUE (cherche)
+    ECRIRE ("Quel nombre?")
+    LIRE(prop)
+    SI (prop==bingo) ALORS
+      ECRIRE ("Bravo ! Trouve en "+cpt+" essais")
+      cherche=False
+    SINON SI(prop<bingo) ALORS ECRIRE ("Plus grand !")
+    SINON ALORS ECRIRE ("Plus petit !")    
+    cpt++
+  FIN TANT QUE
+FIN
+//sentinelle
+//proposer valeur médiane de la zone non exclu
+//7
+
+Algorithme FizzBuzz
+DEBUT
+  VARIABLE n: ENTIER
+  VARIABLE msg: STRING
+  ECRIRE("Valeur final")
+  LIRE(n)
+  POUR i ALLANT DE 1 à n par increment 1
+    MSG=""
+    SI (i%3==0) ALORS MSG=MSG+"Fizz"
+    SI (i%5==0) ALORS MSG=MSG+"Buzz"
+    SI (i%7==0) ALORS MSG=MSG+"Wazz"
+    SI MSG=="" ALORS ECRIRE(i) SINON ECRIRE(MSG)
+  FIN POUR
+FIN
+
+Algorithme ValMdP
+DEBUT
+  VARIABLE Mdp, msg: CHAINE
+  VARIABLE cara: CARACTERE
+  VARIABLE fort, min, maj, chiff, long: Boolean
+  fort=False
+  min=False
+  maj=False
+  chiff=False
+  long=False
+  ECRIRE("Saisir Mot de passe")
+  LIRE("mdp")
+  SI (longeur(Mdp>=8)) ALORS 
+    long=True
+  FIN SI
+  SI (longeur(Mdp>0))
+    POUR i ALLANT DE 0 à longeur(Mdp) par increment 1
+      cara=Mdp[i]
+      SI cara>="a" ET cara<="z" ALORS min=True
+      SI cara>="A" ET cara<="Z" ALORS maj=True
+      SI typeof(cara)==CHIFFRE ALORS chiff=True
+    FIN POUR
+    
+  FIN SI
+  fort=long ET min ET maj ET chiff
+  SI fort ALORS ECRIRE("Valide") SINON ECRIRE("invalide")
+  ECRIRE("Mot de passe Long>8 Majuscule Minuscule Chiffre Valide?")
+  msg=Mdp + repeat(" ")
+  msg <- SI long ALORS msg+\u2713+"     " SINON msg+`\u2715`+"     "
+  msg <- SI maj ALORS msg+\u2713+"     " SINON msg+\u2715+"     "
+  msg <- SI min ALORS msg+\u2713+"     " SINON msg+\u2715+"     "
+  msg <- SI chiff ALORS msg+\u2713+"     " SINON msg+\u2715+"     "
+  msg <- SI fort ALORS msg+\u2713+"     " SINON msg+\u2715+"     "
+  ECRIRE(msg)
+FIN
+
+Algorithme Tbl Multipl
+DEBUT
+  VARIABLE n, i, j: ENTIER
+  VARIABLE Tbl: TABLEAU[STRING]
+  VARIABLE msg: STRING
+  ECRIRE("Quelle table de multiplication?")
+  LIRE(n)
+  Tabl[n+1][2*n+1]
+  //Ligne du tableau
+  POUR i ALLANT DE 0 à 2*n par increment 1     
+    Tabl[1][i]="-"
+  POUR i ALLANT DE 0 à n par increment 1     
+    Tabl[i][1]="|"
+  FIN POUR  
+  POUR i ALLANT DE 1 à n par increment 1     
+    Tabl[0][2*i+2]=i
+    Tabl[i+2][0]=i
+  FIN POUR
+  POUR i ALLANT DE 1 à n par increment 1     
+    POUR j ALLANT DE 1 à n par increment 1     
+      Tabl[i][2*j]=i*j
+    FIN POUR 
+  FIN POUR 
+  POUR i ALLANT DE 1 à n par increment 1     
+    POUR j ALLANT DE 1 à n par increment 1     
+      Ecrire(Tabl[i][j])
+    FIN POUR 
+  FIN POUR   
+FIN
+// 100
+// i*j=j*i
+//n²
+Algorithme Etoiles
+VARIABLE motif: CARACTERE
+VARIABLE n: ENTIER
+ECRIRE("Quel Motif (A,B,C,D)?")
+LIRE(motif)
+ECRIRE("Combien d'étoile?")
+LIRE(n)
+SELON motif
+  CAS A FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat("*",i)+repeat(" ",n-i))
+    FIN POUR
+  CAS B FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat("*",i-n)+repeat(" ",i))
+    FIN POUR
+  CAS C FAIRE
+    POUR i DE 1 à 2*N PAR 2
+      ECRIRE(repeat(" ",i-n)+repeat("*",i)+repeat(" ",i-n))
+    FIN POUR
+  CAS D FAIRE
+    POUR i DE 1 à 2*N PAR 2
+      ECRIRE(repeat(" ",i-n)+repeat("*",i)+repeat(" ",i-n))
+    FIN POUR
+    POUR i DE 2N-2 à 1 PAR -2
+      ECRIRE(repeat(" ",i-n)+repeat("*",i)+repeat(" ",i-n))
+    FIN POUR
+  CAS AUTRE FAIRE
+FIN SELON
+
+Algorithme Etoiles
+VARIABLE motif: CARACTERE
+VARIABLE n: ENTIER
+ECRIRE("Quel Motif (A,B,C,D)?")
+LIRE(motif)
+ECRIRE("Combien d'étoile?")
+LIRE(n)
+SELON motif
+  CAS A FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat("*",i)+repeat(" ",n-i))
+    FIN POUR
+  CAS B FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat("*",i-n)+repeat(" ",i))
+    FIN POUR
+  CAS C FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat(" ",i-n)+repeat("*",n-i)+repeat(" ",2i-1))
+    FIN POUR
+  CAS D FAIRE
+    POUR i DE 1 à N PAR 1
+      ECRIRE(repeat(" ",i-n)+repeat("*",n-i)+repeat(" ",2i-1))
+    FIN POUR
+    POUR i DE N-1 à 1 PAR -1
+      ECRIRE(repeat(" ",i-n)+repeat("*",n-i)+repeat(" ",2i-1))
+    FIN POUR
+  CAS AUTRE FAIRE
+FIN SELON
+
+Algorithme ConvRomainversNbr
+DEBUT
+  VARIABLE rom: CHAINE
+  VARIABLE nbr: ENTIER
+  VARIABLE car: CARACTERE
+  ECRIRE("Chiffre romain:")
+  LIRE(rom)
+  POUR i DE rom.lenght() A 0 PAR -1
+    car=rom[i]
+    SELON car
+      CAS I FAIRE 
+        SI nbr<5 ALORS nbr=nbr+1 SINON nbr=nbr-1
+      CAS V FAIRE 
+        SI nbr<10 ALORS nbr=nbr+5 SINON nbr=nbr-5
+      CAS X FAIRE 
+        SI nbr<50 ALORS nbr=nbr+10 SINON nbr=nbr-10   
+      CAS L FAIRE 
+        SI nbr<100 ALORS nbr=nbr+50 SINON nbr=nbr-50
+      CAS C FAIRE 
+        SI nbr<500 ALORS nbr=nbr+100 SINON nbr=nbr-100
+      CAS D FAIRE 
+        SI nbr<1000 ALORS nbr=nbr+500 SINON nbr=nbr-500 
+      CAS M FAIRE 
+        nbr=nbr+10000 
+  FIN POUR
+  ECRIRE(nbr)
+FIN
+Algorithme ConvNbrversRomain
+DEBUT
+  VARIABLE rom: CHAINE
+  VARIABLE nbr,cpt: ENTIER
+  VARIABLE ctr:BOOLEAN
+  ECRIRE("Chiffre:")
+  LIRE(chiff)
+  t1=['I','X','C','M']
+  t5=['V','L','D']
+  cpt=nbr%M
+  rom=repeat('M',cpt)
+  TANT QUE chiff>0 ALORS
+    POUR i DE 2 A 0 PAR -1  
+      ctr= 
+      cpt=chiff%(10*(i+1))
+      SI (chiff%(50*(i+1))==1) ALORS
+        rom = ? SI cpt<4 ALORS rom+t5[i]+repeat(t1[i],cpt) SINON rom+t1[i]+t1[i+1]
+      SINON
+        rom = ? SI cpt<4 ALORS rom+repeat(t1[i-1],cpt) SINON rom+t5[i]+t1[i]
+      FIN SI
+  FIN POUR
+  ECRIRE(nbr)
+FIN

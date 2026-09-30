@@ -1,0 +1,106 @@
+Algorithme Conversion de temperatures
+Debut
+  VARIABLE Tc Tf: REEL
+  ECRIRE ("Temperature en °C?")
+  LIRE(Tc)
+  Tf=Tc*9/5 + 32
+  ECRIRE ("Temperature en F: "+Tf)
+Fin
+
+Algorithme Calcul de prix TTC avec remise
+Debut
+  VARIABLE Pht, Pttc, Mtva, Mremise, Pfinal, Ttva, Tremise : REEL
+  ECRIRE ("Quel est le prix HT?")
+  LIRE(Pht)
+  ECRIRE ("Quel est le taux de TVA?")
+  LIRE(Ttva)
+  ECRIRE ("Quel est le pourcentage de remise à appliquer?")
+  LIRE(Tremise)
+  Mtva=Pht*Ttva
+  ECRIRE ("Le montant de la TVA est"+Mtva)
+  Pttc=Pht+Mtva
+  ECRIRE ("Le prix TTC est"+Pttc)
+  Mremise=Pttc*Mremise/100
+  ECRIRE ("Le montant de la remise est"+Mremise)
+  Pfinal=Pttc-Mremise
+  ECRIRE ("Le prix final est"+Pfinal) 
+Fin
+
+Algorithme Echange variable A
+Debut
+  VARIABLE a, b : REEL
+  VARIABLE tmp: REEL
+   ECRIRE ("Valeur a?")
+  LIRE(a) 
+  ECRIRE ("Valeur b?")
+  LIRE(b)
+  tmp=a
+  a=b
+  b=tmp
+  ECRIRE("a="+a+" b="+b)
+Fin
+Algorithme Echange variable B
+Debut
+  VARIABLE a, b : REEL
+  ECRIRE ("Valeur a?")
+  LIRE(a) 
+  ECRIRE ("Valeur b?")
+  LIRE(b)
+  a=a+b
+  b=a-b
+  a=a-b
+  ECRIRE("a="+a+" b="+b)
+Fin
+Algorithme Calcul d'IMC avec interpretation
+Debut
+  VARIABLE Poids, Taille, IMC : REEL
+  VARIABLE Lins, Lob, Lsp: REEL
+  VARIABLE Msg: CHAINE
+  lins=18.5
+  lsp=25
+  lob=30
+  ECRIRE ("Quel est le poids?")
+  LIRE(Poids)
+  ECRIRE ("Quelle est la taille?")
+  LIRE(Taille)
+  IMC=poids/taille²
+  SELECT IMC:
+    <linf:   msg="Insuffisance"
+    <lpn: msg="poids normal"
+    <lsp: msg="surpoids"
+    else: msg="obseité"
+  ECRIRE(msg)
+Fin
+
+Algorithme Devis peinture
+Debut
+  VARIABLE Long, Larg, Haut, surface, Cpot, Spot, Prix, Touv : REEL
+  VARIABLE  Npot: ENTIER
+  Spot=10
+  Cpot=29.9
+  Touv=0.20
+  ECRIRE ("Quelle est la longeur de la pièce?")
+  LIRE(Long)
+  ECRIRE ("Quelle est la largeur de la pièce?")
+  LIRE(Larg)
+  ECRIRE ("Quelle est la hauteur de la pièce?")
+  LIRE(Haut)
+  surface=(2*Long+2*Larg)*Haut*(1-Touv);
+  Npot=arrondi.sup(surface/Spot)
+  prix=Npot*Cpot
+  ECRIRE("Nbr pot="+Npot+" Cout peinture:" + prix)
+Fin
+
+
+Algorithme Convertisseur de temps
+Debut
+  VARIABLE temps : REEL
+  VARIABLE  heure, minute, seconde: ENTIER
+  ECRIRE ("Quelle durée en seconde?")
+  LIRE(temps)
+  seconde=temps%60
+  temps=(temps-seconde)/60
+  minute=temps%60
+  heure=(temps-minute)/60
+  ECRIRE(heure+"h "+minute+"m "+seconde+"s")
+Fin
