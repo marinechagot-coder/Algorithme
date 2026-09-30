@@ -230,17 +230,20 @@ DEBUT
   LIRE(chiff)
   t1=['I','X','C','M']
   t5=['V','L','D']
-  cpt=nbr%M
+  cpt=chiff/1000
   rom=repeat('M',cpt)
+  chiff=chiff-1000*cpt
   TANT QUE chiff>0 ALORS
     POUR i DE 2 A 0 PAR -1  
-      ctr= 
-      cpt=chiff%(10*(i+1))
-      SI (chiff%(50*(i+1))==1) ALORS
+      ctr= chiff/(5*10^i)==1
+      SI ctr ALORS chiff=chiff-5*10^i
+      cpt=chiff/10^i
+      SI (ctr) ALORS
         rom = ? SI cpt<4 ALORS rom+t5[i]+repeat(t1[i],cpt) SINON rom+t1[i]+t1[i+1]
       SINON
-        rom = ? SI cpt<4 ALORS rom+repeat(t1[i-1],cpt) SINON rom+t5[i]+t1[i]
+        rom = ? SI cpt<4 ALORS rom+repeat(t1[i],cpt) SINON rom+t1[i]+t5[i]
       FIN SI
+      chiff=chiff-cpt*10^i
   FIN POUR
   ECRIRE(nbr)
 FIN
