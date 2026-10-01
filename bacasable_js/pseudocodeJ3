@@ -1,0 +1,109 @@
+Algorithme Stat
+DEBUT
+  FONCTION minimum(tabl : ENTIER[]) : ENTIER
+  DEBUT
+      VARIABLE min : ENTIER
+      min=tabl[0]
+      POUR i ALLANT DE 1 A taille tabl PAR 1
+        SI tabl[i]<min ALORS min=tabl[i]
+      FIN POUR
+      RETOURNER min
+  FIN
+
+  FONCTION maximum(tabl : ENTIER[]) : ENTIER
+  DEBUT
+      VARIABLE max : ENTIER
+      max=tabl[0]
+      POUR i ALLANT DE 1 A taille tabl PAR 1
+        SI tabl[i]>max ALORS max=tabl[i]
+      FIN POUR
+      RETOURNER max
+  FIN
+  
+  FONCTION moyenne(tabl : ENTIER[]) : REEL
+  DEBUT
+      VARIABLE moy : REEL
+      POUR i ALLANT DE 0 A taille tabl PAR 1
+        moy=moy+tabl[i]
+      FIN POUR
+      moy=moy/moy.taille
+      RETOURNER moy
+  FIN
+
+  FONCTION ecartType(tabl : ENTIER[]) : REEL
+  DEBUT
+      VARIABLE ecartT, moy : REEL
+      moy=moyenne(tabl)
+      POUR i ALLANT DE 0 A taille tabl PAR 1
+        ecartT=ecartT+(Ttbl[i]-moy)²
+      FIN POUR
+      ecartT=racine(ecartT/tabl.taille)
+      RETOURNER ecartT
+  FIN
+  
+  FONCTION afficherStats(tabl : ENTIER[]) : vide
+  DEBUT
+      VARIABLE min,max: ENTIER
+      VARIABLE ecartT, moy : REEL
+      VARIABLE visuTabl: CHAINE
+      min=minimum(tabl)
+      max=maximum(tabl)
+      moy=moyenne(tabl)
+      ecartT=ecartType(tabl)
+      visuTabl="["
+      POUR i ALLANT DE 0 A tabl.taille PAR 1
+        visuTabl=visuTabl+tabl[i]
+        visuTabl = SI i!=tabl.taille ALORS visuTabl+"," SINON visuTabl+"]"
+      FIN POUR
+      ECRIRE("Tableau  Min  Max  Moyenne  Ecart-Type")
+      ECRIRE(visuTabl," ",min," ",max," ",moyenne," ",ecartType)
+      RETOURNER vide
+  FIN
+FIN
+// il faut initialiser min avec une valeur appartenant au tableau car le contenue n'est pas connu 
+
+algorithme GestListCourse
+DEBUT
+  VARIABLE choix, num: ENTIER
+  VARIABLE liste[], val, etat: CHAINE
+  VARIABLE quitter: BOOLEAN
+  quitter=Faux
+  ECRIRE("Menu: \n 1.Ajouter un article \n 2.Supprimer un article (par nom) \n 3.Rechercher un article \n 4. Afficher la liste\n 5. Quitter\n")
+  TANT QUE !quitter
+    Lire(choix)
+    SELECTION SELON choix
+      CAS 1 FAIRE //création
+        ECRIRE("Valeur à saisir")
+        LIRE(val)
+        AJOUTER val DANS liste
+        ECRIRE("Ok")
+      CAS 2 FAIRE //Delate
+        ECRIRE("Valeur à supprimer")
+        LIRE(val)
+        Index=rechercher(liste,val) 
+        supprimer liste(Index)
+        ECRIRE(etat)      
+      CAS 3 FAIRE //Recherche
+        ECRIRE("Valeur à rechercher")
+        LIRE(val) 
+        ECRIRE(rechercher(liste,val))      
+      CAS 4 FAIRE //Afficher
+        POUR i DE 0 A liste.lenght PAR 1
+          ECRIRE(i + list(i)) 
+      CAS 5 FAIRE 
+        quitter=vrai
+      CAS AUTRE FAIRE 
+        ECRIRE("Commande invalide")
+
+  FIN TANT QUE
+
+FIN
+  FONCTION rechercher(tabl : CHAINE[], val: CHAINE) : ENTIER
+  DEBUT
+      VARIABLE index : ENTIER
+      index=tabl.lenght+1
+      POUR i ALLANT DE 0 A taille tabl PAR 1
+        SI tabl(i)==val ALORS index=i
+      FIN POUR
+      RETOURNER index
+  FIN

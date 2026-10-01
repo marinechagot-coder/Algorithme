@@ -7,7 +7,6 @@ void main() {
     int cpt=chiff/1000;
     String rom="M".repeat(cpt);
     chiff=chiff-cpt*1000;
-    while(chiff>0){
         for (int i=2;i>=0;i--){
             boolean ctr=(chiff/(5*(int) Math.pow(10,i))==1);
             if (ctr) {chiff=chiff-(5*(int) Math.pow(10,i));}
@@ -18,10 +17,7 @@ void main() {
                 rom = cpt<4 ? rom+t1[i].repeat(cpt) : rom+t1[i]+t5[i];
             }
             chiff=chiff-cpt*(int) Math.pow(10,i);
-
         }
-
-    }
     System.out.print(rom);
     scanner.close();
     /*
